@@ -11,7 +11,7 @@
 
     a) linux b) windows c) ssh  d) winrm
 
-3) We have a sample inventory file called inventory01 under. It has 3 servers listed, add another server called server4.company.com in this file.
+3) We have a sample inventory file called inventory01 . It has 3 servers listed, add another server called server4.company.com in this file.
    ```
    # Sample Inventory File
    server1.company.com
