@@ -1,148 +1,102 @@
-1) Which of the following is used to separate the key and value in YAML?
+1. Ping All Hosts
+   To check if all hosts in your inventory are reachable, use the ping module:
+   ```
+   ansible all -m ping
+   ```
+   
+2. Run a Command on Remote Hosts
+   To execute a command on all hosts, use the shell or command module. For example, to list files in the /tmp directory:
+   ```
+    ansible all -m shell -a 'ls /tmp'
+   ```
 
-   a) colon b) semicolon c) hyphen d) comma
+3. Install a Package
+   To install a package on all hosts, use the apt module for Debian-based systems or the yum module for RedHat-based systems. For example, to install vim:
 
-2) How many array keys are there in the following yaml snippet?
-   Fruits:
-     - Orange
-     - Apple
-     - Banana
-   Vegetables:
-     - Carrot
-     - CauliFlower
-     - Tomato
+   For Debian-based systems:
+   ```
+   ansible all -m apt -a 'name=vim state=present' -b
+   ```
+   For RedHat-based systems:
+   ```
+   ansible all -m yum -a 'name=vim state=present' -b
+   ```
 
-     a) 8 b) 2 c) 3 d) 6
+4. Create a Directory
+   To create a directory on remote hosts, use the file module:
+   ```
+   ansible all -m file -a 'path=/tmp/newdir state=directory' -b
+   ```
+   
+5. Copy a File
+   To copy a file from the local machine to remote hosts, use the copy module. For example, to copy myfile.txt to /tmp:
+   ```
+   ansible all -m copy -a 'src=myfile.txt dest=/tmp/myfile.txt'
+   ```
 
+6. Update System Packages
+   To update all packages on Debian-based systems, use the apt module:
+   ```
+   ansible all -m apt -a 'upgrade=dist' -b
+   ```
+   For RedHat-based systems, you might use:
+   ```
+   ansible all -m yum -a 'name=* state=latest' -b
+   ```
+7. Start a Service
+   To start a service on remote hosts, use the service module. For example, to start the nginx service:
+   ```
+   ansible all -m service -a 'name=nginx state=started' -b
+   ```
+8. Restart a Service
+   To restart a service, use the service module. For example, to restart nginx:
+   ```
+   ansible all -m service -a 'name=nginx state=restarted' -b
+   ```
+
+9. Remove a Package
+   To remove a package from all hosts, use the apt or yum module. For example, to remove vim:
+   For Debian-based systems:
+   ```
+   ansible all -m apt -a 'name=vim state=absent' -b
+   ```
+    For RedHat-based systems:
+    ```
+    ansible all -m yum -a 'name=vim state=absent' -b
+    ```
+10. Check Disk Usage
+    To check disk usage, you can use the shell module to run a command like df -h:
+    ```
+    ansible all -m shell -a 'df -h'
+    ```
+
+11. Retrieve a File from Remote Hosts
+    To fetch a file from remote hosts, use the fetch module. For example, to fetch /tmp/myfile.txt from remote hosts to the local directory /tmp/:
+    ```
+    ansible all -m fetch -a 'src=/tmp/myfile.txt dest=/tmp/ flat=yes'
+    ```
     
-3) Which of the following statements is true?
+12. Manage Users
+    To create a user on remote hosts, use the user module. For example, to create a user newuser:
+    ```
+    ansible all -m user -a 'name=newuser state=present' -b
+    ```
 
-   A. Dictionary is an unordered collection whereas list is an ordered collection.
-   
-   B. Dictionary is an ordered collection whereas list is an unordered collection.
-   
-   C. Dictionary and list, both are an ordered collection.
-   
-   D. Dictionary and list, both are an unordered collection.
+13. Execute a Command as a Specific User
+    To execute a command as a specific user, use the become option with the -b flag. For example, to list files in /root as the root user
 
-5) There is a yaml file named practice1.yaml with a key property1 and value value1. Add an additional key named property2 and value value2.
+    ```
+    ansible all -m shell -a 'ls /root' -b -u root
+    ```
 
-   ```
-   property1: value1
-   ```
-   Add an additional key named property2 and value value2.
-   
-6) There is a yaml file named practice2.yaml file with the key name and value apple.
-   ```
-   name: apple
-   ```
-   Add some additional properties (given below) to the dictionary.
-   color= red
-   weight= 90g
+14. Check Free Memory
+    To check free memory on remote hosts, use the shell module to run free -m
+    ```
+    ansible all -m shell -a 'free -m'
+    ```
 
-7) There is a yaml file named practice3.yaml dictionary named employee. 
-
-   ```
-   employee:
-     name: john
-   ```
-   Add the remaining properties to it using information from the table below.
-
-   | Key/Property | Value |
-   |------|------|
-   | name | john |
-   | gender | male |
-   | age | 24 |
-
-8)  Add a dictionary named address to add the address information in the above file practice3.yaml.
-    | Key/Property | Value |
-    |------|------|
-    | city | edison |
-    | state | new jersey |
-    | country | united states |
-
-9)  There is a yaml file named practice4.yaml with some data for apple, orange and mango. 
-   
+15. Gather System Facts
+    To gather facts about all hosts (like hostname, OS, and more), use the setup module:
      ```
-     - name: apple
-         color: red
-         weight: 100g
-     - name: orange
-     - name: mango
-       ```
-
-    Just like apple, we would like to add additional details for each item, such as color, weight etc. Modify the remaining items to match the below data.
-    
-    ```
-    orange
-    ```
-    
-
-    | Color  | Weight |
-    |--------|--------|
-    | orange | 50g    |
-  
-
-   
-    ```
-    mango
-    ```
-    
-
-    | color  | weight |
-    |--------|--------|
-    | yellow | 90g   |
-
-
-10) There is a yaml file named practice5.yaml  with a dictionary named employee. We would like to record information about multiple employees. Convert the dictionary named employee to an array named employees.
-   
-  ```
-  employee:
-    name: john
-    gender: male
-    age: 24
-  ```
-
-10) Update the practice6.yaml file to add an additional employee (below the existing entry) to the list using the below information.
-
-    ```
-    employees:
-      - name: john
-        gender: male
-        age: 24
-    ```
-
-      | Key/Property | Value |
-      |------|------|
-      | name | sarah |
-      | gender | female |
-      | age | 28 |
-
-11) We have updated the practice7.yaml file file to add some more details.
-
-    ```
-    employee:
-      name: john
-      gender: male
-      age: 24
-      address:
-        city: 'edison'
-        state: 'new jersey'
-        country: 'united states'
-    ```
-
-    Now add the pay information. Remember, while address is a dictionary, payslips is an array of month and amount.
-    
+     ansible all -m setup
      ```
-    payslips
-    ```
-    
-
-    | Month  | amount |
-    |--------|--------|
-    | june | 1400   |
-    | July | 2400   |
-    | August | 3400   |
-    
-    Now add the pay information. Remember, while address is a dictionary, payslips is an array of month and amount.
-    
