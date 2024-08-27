@@ -22,12 +22,14 @@ B. Dictionary is an ordered collection whereas list is an unordered collection.
 C. Dictionary and list, both are an ordered collection.
 D. Dictionary and list, both are an unordered collection.
 
-4) There is a yaml file named practice.yaml under /home/bob/playbooks/ directory with a key property1 and value value1. Add an additional key named property2 and value value2.
+4) There is a yaml file named practice1.yaml with a key property1 and value value1. Add an additional key named property2 and value value2.
+```
 cat /home/bob/playbooks/practice.yaml
 property1: value1
+```
 
 5)We have updated the /home/bob/playbooks/practice.yaml file with the key name and value apple. Add some additional properties (given below) to the dictionary.
-
+``
 
 name= apple
 color= red
