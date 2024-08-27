@@ -27,7 +27,12 @@ D. Dictionary and list, both are an unordered collection.
 ```cat /home/bob/playbooks/practice1.yaml
 property1: value1```
 
-
+```
+cd existing_repo
+git remote add origin https://gitlab.env.io/sre/ump/k8s/clusters/ump-monolith.git
+git branch -M main
+git push -uf origin main
+```
 5) There is a yaml file named practice2.yaml file with the key name and value apple. Add some additional properties (given below) to the dictionary.
 ``
 
