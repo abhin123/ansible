@@ -24,13 +24,12 @@ D. Dictionary and list, both are an unordered collection.
 
 4) There is a yaml file named practice1.yaml with a key property1 and value value1. Add an additional key named property2 and value value2.
 
-```
-cat /home/bob/playbooks/practice.yaml
+```cat /home/bob/playbooks/practice1.yaml
 property1: value1
 ```
 
 
-5)We have updated the /home/bob/playbooks/practice.yaml file with the key name and value apple. Add some additional properties (given below) to the dictionary.
+5) There is a yaml file named practice2.yaml file with the key name and value apple. Add some additional properties (given below) to the dictionary.
 ``
 
 name= apple
