@@ -117,5 +117,5 @@
      user_details={'username': 'admin', 'password': 'secret_pass', 'email': 'admin@example.com'}
      ```
 
-Right now the user details is hardcoded in the playbook. Update the /home/bob/playbooks/user_setup.yaml playbook to replace the hardcoded values to use the values from the user_details variable defined in the inventory file. Once updated, please run the playbook once to make sure it works fine.
+Right now the user details is hardcoded in the playbook. Update the variable05.yaml playbook to replace the hardcoded values to use the values from the user_details variable defined in the inventory file.
 
