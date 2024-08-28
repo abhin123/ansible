@@ -89,3 +89,33 @@
     Right now the list of packages to be installed is hardcoded in the playbook. Update the variable04.yaml playbook to replace the hardcoded list of 
     packages to use the values from the app_list variable defined in the inventory file.
 
+8) The file variable05.yaml  playbook is responsible for setting up a new user on a remote server(s).
+    ```
+    ---
+    - hosts: all
+      become: yes
+      tasks:
+        - name: Set up user
+          user:
+            name: "admin"
+            password: "secret_pass"
+            comment: "admin@example.com"
+            state: present
+      ```
+   The user details like username, password, and email are already added to the below inventory file as a dictionary variable called user_details.
+
+     ```
+     localhost ansible_connection=local nameserver_ip=8.8.8.8 snmp_port=160-161
+     node01 ansible_host=node01 ansible_ssh_pass=caleston123
+     node02 ansible_host=node02 ansible_ssh_pass=caleston123
+     [web_nodes]
+     node01
+     node02
+
+     [all:vars]
+     app_list=['vim', 'sqlite', 'jq']
+     user_details={'username': 'admin', 'password': 'secret_pass', 'email': 'admin@example.com'}
+     ```
+
+Right now the user details is hardcoded in the playbook. Update the /home/bob/playbooks/user_setup.yaml playbook to replace the hardcoded values to use the values from the user_details variable defined in the inventory file. Once updated, please run the playbook once to make sure it works fine.
+
