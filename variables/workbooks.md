@@ -56,8 +56,7 @@
          - command: 'echo "I work as a Systems Engineer"'
      ```
 
-7)  The file variable04.yaml playbook is responsible for installing a list of packages on a remote server(s). The list of packages to be installed is already added to the 
- /home/bob/playbooks/inventory file as a list variable called app_list.
+7)  The file variable04.yaml playbook is responsible for installing a list of packages on a remote server(s). 
 
     ```
     ---
@@ -73,7 +72,20 @@
             - sqlite
             - jq
        ```
+      The list of packages to be installed is already added to the below inventory file as a list variable called app_list.
+       ```
+       localhost ansible_connection=local nameserver_ip=8.8.8.8 snmp_port=160-161
+       node01 ansible_host=node01 ansible_ssh_pass=caleston123
+       node02 ansible_host=node02 ansible_ssh_pass=caleston123
+       [web_nodes]
+       node01
+       node02
 
+       [all:vars]
+       app_list=['vim', 'sqlite', 'jq']
+       user_details={'username': 'admin', 'password': 'secret_pass', 'email': 'admin@example.com'}
+       ```
+       
     Right now the list of packages to be installed is hardcoded in the playbook. Update the variable04.yaml playbook to replace the hardcoded list of 
     packages to use the values from the app_list variable defined in the inventory file.
 
