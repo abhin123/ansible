@@ -55,37 +55,43 @@
            yum:
              name: tomcat
              state: installed
+  
+   ```
+
+3) Consider again the same sample playbook named update_service.yml as shown below.
+
+     ```
+     - hosts: all
+       tasks:
+         - name: Install a new package
+           apt:
+            name: new_package
+            state: present
+
+        - name: Update the service
+           service:
+             name: my_service
+             state: restarted
+
+         - name: Check service status
+           service:
+             name: my_service
+             state: started
      ```
 
-  3) Consider again the same sample playbook named update_service.yml as shown below.
-
-```
-- hosts: all
-  tasks:
-    - name: Install a new package
-      apt:
-        name: new_package
-        state: present
-
-    - name: Update the service
-      service:
-        name: my_service
-        state: restarted
-
-    - name: Check service status
-      service:
-        name: my_service
-        state: started
-```
 Let's suppose you have already ran this playbook on your server. Now, once you run this playbook in check mode against same server, which tasks would result in changed status?
 
+     A. Install a new package
+     B. Update the service
+     C. Check service status
+     D. All of the tasks
 
-A. Install a new package
-B. Update the service
-C. Check service status
-D. All of the tasks
-  3) Run a playbook to display the contents of the file `/etc/hosts` 
+  4) Run a playbook to Execute a date command against localhost
+     
+  5) Run a playbook to display the contents of the file `/etc/hosts` localhost
 
-  4) Run a playbook to Execute a date command and display the contents of the file `/etc/hosts`. These task should be run against the remote node
+  6) Run a playbook to Execute a date command and display the contents of the file `/etc/hosts`. These task should be run against the remote node
 
-  5) Run a playbook to Check Disk Usage on Linux and print the disk usage.
+  7) Create a file under your home directory and run a playbook to copy the created file from your home directory to /home/ansible directory of the remote host
+     
+  8) Run a playbook to install Nginx and start the nginx service
