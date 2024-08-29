@@ -3,6 +3,7 @@
    a) colon b) semicolon c) hyphen d) comma
 
 2) How many array keys are there in the following yaml snippet?
+   ```
    Fruits:
      - Orange
      - Apple
@@ -11,6 +12,7 @@
      - Carrot
      - CauliFlower
      - Tomato
+   ```
 
      a) 8 b) 2 c) 3 d) 6
 
