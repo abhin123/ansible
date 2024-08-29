@@ -146,5 +146,5 @@
     | July | 2400   |
     | August | 3400   |
     
-    Now add the pay information. Remember, while address is a dictionary, payslips is an array of month and amount.
+    
     
