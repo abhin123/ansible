@@ -1,13 +1,13 @@
 1. Ping All Hosts
    To check if all hosts in your inventory are reachable, use the ping module:
    ```
-   ansible all -m ping
+   ansible all -i invenory.ini -m ping
    ```
    
 2. Run a Command on Remote Hosts
    To execute a command on all hosts, use the shell or command module. For example, to list files in the /tmp directory:
    ```
-    ansible all -m shell -a 'ls /tmp'
+    ansible all -i invenory.ini -m shell -a 'ls /tmp'
    ```
 
 3. Install a Package
@@ -15,11 +15,11 @@
 
    For Debian-based systems:
    ```
-   ansible all -m apt -a 'name=vim state=present' -b
+   ansible all -i invenory.ini -m apt -a 'name=vim state=present' -b
    ```
    For RedHat-based systems:
    ```
-   ansible all -m yum -a 'name=vim state=present' -b
+   ansible all -i invenory.ini -m yum -a 'name=vim state=present' -b
    ```
 
 4. Create a Directory
